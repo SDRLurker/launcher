@@ -1,0 +1,210 @@
+﻿<html>
+<head>
+<title>Launcher.js</title>	
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div class="col-xs-12">
+  <div class="well">
+    <ul class="nav nav-list">
+      <li class="nav-header"><h1 align="center">Launcher.js</h1></li>
+      <li>
+        <table width="100%"><tr>
+          <td width="30%" align="center"><a href="index.html">목 록</a></td>
+          <td width="40%" align="center"><a href="import.html">불러오기</a></td>
+          <td width="30%" align="center"><a href="add.html">등 록</a></td>
+        </tr></table>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="col-xs-12">
+  <div class="col-xs-9">&nbsp;</div>
+  <div class="col-xs-3"><a id="help_toggle">도움말 보기/감추기</a></div>
+</div>
+
+<div class="col-xs-12">
+  <div class="col-xs-2"><b>실행이름</b></div>
+  <div class="col-xs-10"><input id="name" type="text"/></div>
+</div>
+
+<div class="col-xs-12">
+  <div class="col-xs-12 help">
+    <b>실행이름</b> : 목록에 나오게 될 이름을 입력합니다.
+  </div>
+</div>
+
+<div class="col-xs-12">
+  <div class="col-xs-2"><b>바꿀 설정파일</b></div>
+  <div class="col-xs-10"><input id="confpath" type="file" /></div>
+</div>
+<div class="col-xs-12">
+  <div class="col-xs-12 help">
+    <b>바꿀 설정파일</b> : 내용을 바꾸고 싶은 설정파일을 선택합니다.<br/>
+    1MB 이하 파일만 선택할 수 있습니다.
+  </div>
+</div>
+<div class="col-xs-12">
+  <div class="col-xs-12">&nbsp;</div>
+</div>
+
+<div id="editor">
+  <div class="col-xs-12">
+    <div class="col-xs-2"><b>설정파일 내용</b></div>
+    <div class="col-xs-10">&nbsp;</div>
+  </div>
+  <div class="col-xs-12">
+    <textarea id="file_content" placeholder="본문" rows="10" class="col-xs-12"></textarea>
+  </div>
+  <div class="col-xs-12">
+  <div class="col-xs-12 help">
+    <b>설정파일 내용</b> : 선택된 선택파일의 내용을 보여줍니다.
+  </div>
+  </div>
+  <div class="col-xs-12">
+    <div class="col-xs-2"><b>코드작성</b></div>
+    <div class="col-xs-10">&nbsp;</div>
+  </div>
+  <div class="col-xs-12">
+  function replace(text){<br/>
+  &nbsp;&nbsp;&nbsp;&nbsp;var replacedText = text;
+  </div>
+  <div class="col-xs-12">
+    <textarea id="source" placeholder="본문" rows="10" class="col-xs-12"></textarea>
+  </div>
+  <div class="col-xs-12">
+  &nbsp;&nbsp;&nbsp;&nbsp;return replacedText;<br/>
+  }
+  </div>
+  <div class="col-xs-12">
+  <div class="col-xs-12 help">
+    <b>코드 작성</b> : 변경될 문자열을 생성할 자바스크립트 코드를 에디터 창에 작성합니다. <br/>
+    text 변수에는 원래 파일 내용이 입력 파라미터로 들어옵니다.<br/>
+    리턴될 replacedText는 바꾸고 싶은 파일 내용을 담고 있는 변수입니다.<br/>  
+  </div>
+  </div>
+  <div class="col-xs-12">
+    <a class="btn btn-default" id="verify">검증</a>
+    <a class="btn btn-default" id="test">테스트</a>
+  </div>
+  <div class="col-xs-12">
+  <div class="col-xs-12 help">
+    <b>검증</b> : 코드 작성 에디터 창에 입력한 코드를 검증합니다.<br/>
+    <b>테스트</b> : 입력한 코드를 실행하여 설정파일 내용 창에 적용합니다.<br/>
+    실제 파일에 적용되지는 않습니다.
+  </div>
+  </div>
+</div>
+<div class="col-xs-12">
+  <div class="col-xs-2"><b>실행파일</b></div>
+  <div class="col-xs-10"><input id="exepath" type="file" /></div>
+</div>
+<div class="col-xs-12">
+<div class="col-xs-12 help">
+    <b>실행파일</b> : 실행할 프로그램을 선택합니다.<br/>
+</div>
+</div>
+<div class="col-xs-12">
+  <div class="col-xs-2"><b>인자</b></div>
+  <div class="col-xs-10"><input id="param" type="text" /></div>
+</div>
+<div class="col-xs-12">
+<div class="col-xs-12 help">
+    <b>인자</b> : 실행할 프로그램을 뒤에 붙을 인자(파라미터)를 입력합니다.<br/>
+</div>
+</div>
+<div class="col-xs-12">
+  <a class="btn btn-default" id="execute">실행</a>
+  <a class="btn btn-default" id="add">등록</a>
+</div>
+<div class="col-xs-12">
+<div class="col-xs-12 help">
+  <b>실행</b> : 위의 입력한 내용들을 바탕으로 설정파일을 바꾼 후 프로그램을 실행합니다. <br/>
+  <b>등록</b> : 위의 입력한 내용들을 바탕으로 "목록"에 실행목록이 등록됩니다. <br/>
+</div>
+</div>
+
+<script src="./js/jquery-1.7.2.js"></script>
+<script src="./launcher.js"></script>
+<script src="./execute.js"></script>
+<script src="./editor.js"></script>
+<script>
+  $(".help").hide();
+  $("#help_toggle").on("click", function(){
+    $(".help").fadeToggle();
+  });
+
+  $("#execute").on("click", function(){
+    var exepath = $("#exepath").val();
+    var param = $("#param").val();
+    var source = $("#source").val();
+    var confpath = $("#confpath").val();
+
+    if(verify_code()===false)
+      return;
+    if(confpath && confpath.length > 0){
+      if(typeof replace !== 'function'){
+        alert('코드가 검증이 되어야 실행할 수 있습니다.');
+        return;
+      }
+      readSingleFile(confpath, function(data){
+        var result = replace(data.toString());
+        writeSingleFile(confpath, result);
+      });
+    }
+    
+    if(exepath && exepath.length>0){
+      if(param && param.length>0){
+        execute(exepath, param);
+      } else {
+        execute(exepath);
+      }
+    } else {
+      alert('실행 파일을 입력해야 합니다.');
+    }
+  });
+  $("#editor").hide();
+  $("#confpath").change(function(evt) {
+    var confpath = $("#confpath").val();
+    readSingleFile(confpath, function(data){
+      $("#file_content").val(data.toString());
+      $("#editor").show();
+    });
+  });
+  $("#add").on("click", function(){
+    var static_element = {};
+    
+    var name = $("#name").val();
+    var exepath = $("#exepath").val();
+    var param = $("#param").val();
+    var confpath = $("#confpath").val();
+    var source = $("#source").val();
+
+    if(!name || name.length === 0)
+    {
+      alert('실행이름을 입력해야 합니다.');
+      return;
+    }
+    if(!exepath || exepath.length === 0)
+    {
+      alert('실행파일을 입력해야 합니다.');
+      return;
+    }
+    if(verify_code(source)===false)
+      return;
+
+    static_element["exepath"] = exepath;
+    static_element["param"] = param;
+    static_element["confpath"] = confpath;
+    static_element["source"] = source;
+    addid(tab, name, static_element);
+    writeConfJSON(tab);
+    document.location.href = 'index.html';
+  });
+  readConfJSON();
+</script>
+</body>
+</html>

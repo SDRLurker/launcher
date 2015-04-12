@@ -1,0 +1,69 @@
+﻿<html ng-app="listApp" ng-controller="listCtrl">
+<head>
+<title>Launcher.js</title>	
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<script src="node_modules/angular/angular.min.js"></script>
+</head>
+<body>
+<div class="col-xs-12">
+  <div class="well">
+    <ul class="nav nav-list">
+      <li class="nav-header"><h1 align="center">Launcher.js</h1></li>
+      <li>
+        <table width="100%"><tr>
+          <td width="30%" align="center"><a href="index.html">목 록</a></td>
+          <td width="40%" align="center"><a href="import.html">불러오기</a></td>
+          <td width="30%" align="center"><a href="add.html">등 록</a></td>
+        </tr></table>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="col-xs-12">
+  <div class="col-xs-6"><b>이 름</b></div>
+  <div class="col-xs-6"><b>기 능</b></div>
+</div>
+<div class="col-xs-12" ng-repeat="(key, data) in tab">
+  <div class="col-xs-6">{{key}}</div>
+  <div class="col-xs-6">
+    <a class="btn btn-default" ng-click="del(key)">삭제</a>
+    <a class="btn btn-default" ng-href="modify.html?key={{key}}">수정</a>
+    <a class="btn btn-default" ng-click="exe(data.static)">실행</a>
+  </div>
+</div>
+
+<script src="./launcher.js"></script>
+<script src="./execute.js"></script>
+<script>
+  readConfJSON();
+  var app = angular.module('listApp', []);
+  app.controller('listCtrl', function($scope) {
+    $scope.tab = tab;
+    $scope.exe = function(static){
+      if(static.confpath && static.confpath.length > 0){
+        run(static.source);
+        readSingleFile(static.confpath, function(data){
+          var result = replace(data.toString());
+          writeSingleFile(static.confpath, result);
+        });
+      }
+
+      if(static.param && static.param.length > 0)
+        execute(static.exepath, static.param);
+      else
+        execute(static.exepath);
+    };
+    $scope.del = function(key){
+      if(confirm(key + '를 삭제하시겠습니까?')){
+        delete tab[key];
+        writeConfJSON(tab);
+        document.location.href='index.html';
+      } 
+    }
+  });
+</script>
+</body>
+</html>

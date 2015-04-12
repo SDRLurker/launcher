@@ -1,0 +1,63 @@
+﻿<html ng-app="listApp" ng-controller="listCtrl">
+<head>
+<title>Launcher.js</title>	
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div class="col-xs-12">
+  <div class="well">
+    <ul class="nav nav-list">
+      <li class="nav-header"><h1 align="center">Launcher.js</h1></li>
+      <li>
+        <table width="100%"><tr>
+          <td width="30%" align="center"><a href="index.html">목 록</a></td>
+          <td width="40%" align="center"><a href="import.html">불러오기</a></td>
+          <td width="30%" align="center"><a href="add.html">등 록</a></td>
+        </tr></table>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="col-xs-12">
+  <div class="col-xs-9">&nbsp;</div>
+  <div class="col-xs-3"><a id="help_toggle">도움말 보기/감추기</a></div>
+</div>
+
+<div class="col-xs-12">
+  <div class="col-xs-3"><b>설정파일</b></div>
+  <div class="col-xs-7"><input id="confpath" type="file" accept=".json"/></div>
+  <div class="col-xs-2"><a class="btn btn-default" id="import">가져오기</a></div>
+</div>
+
+<div class="col-xs-12 help">
+  이 프로그램은 "목록"에 대한 정보를 tab.json으로 저장합니다.<br/>
+  <b>설정파일</b> : "목록"에 대한 정보를 불러오기할 때 사용할 json파일을 선택합니다.<br/>
+  <b>가져오기</b> : "목록"에 선택된 설정파일을 가져옵니다. 가져온 설정내용이 "목록"에 추가로 적용됩니다.
+</div>
+
+<script src="./js/jquery-1.7.2.js"></script>
+<script src="./launcher.js"></script>
+<script>
+  $(".help").hide();
+  $("#help_toggle").on("click", function(){
+    $(".help").fadeToggle();
+  });
+
+  readConfJSON();
+  $("#import").hide();
+  $("#confpath").change(function(evt) {
+    $("#import").fadeIn();
+  });
+  $("#import").on("click", function(){
+    var confpath = $("#confpath").val();
+    if( importConfJSON(confpath) === true){
+      writeConfJSON(tab);
+      document.location.href='index.html';
+    }
+  });
+</script>
+</body>
+</html>
