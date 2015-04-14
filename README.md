@@ -20,7 +20,7 @@ $ npm install
 
 * nw.js를 통해 다음처럼 프로그램을 실행할 수 있습니다.
 ```bash
-$ (nw.js의 경로\)nw.js .
+$ (nw.js의 경로\)nw.exe .
 ```
 
 ## Installation for developers
@@ -38,12 +38,12 @@ $ npm install
 
 * execute this program:
 ```bash
-$ (the path of nw.js\\)nw.js .
+$ (the path of nw.js\)nw.exe .
 ```
 
 ## 사용자용 설치
 ## Installation for users
 * Windows 32bit
-http://sdr1982.hosting.bizfree.kr/launcher/Setup_x86.exe
+http://php-webping.rhcloud.com/Setup_x86.exe
 * Windows 64bit
-http://sdr1982.hosting.bizfree.kr/launcher/Setup_x64.exe
+http://php-webping.rhcloud.com/Setup_x64.exe

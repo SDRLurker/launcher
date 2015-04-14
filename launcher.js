@@ -13,10 +13,16 @@
   }
 
   var path = require('path');
-  function getNWDirectory(){
-    var nwPath = process.execPath;
-    var nwDir = path.dirname(nwPath);
-    return nwDir;
+  function getConfDirectory(){
+    var confDir = process.env.APPDATA + '\\launcher.js'
+    var stats;
+    //console.log(confDir);
+    try{
+      stats = fs.lstatSync(confDir);
+    }catch(e){
+      fs.mkdirSync(confDir);
+    }
+    return confDir;
   }
 
   var fs = require('fs');
@@ -44,7 +50,7 @@
     tab_obj[id] = {"static" : static_element};
   }
   var tab = {};
-  var tabFile = getNWDirectory() + '\\' +'tab.json';
+  var tabFile = getConfDirectory() + '\\' +'tab.json';
   
   function writeConfJSON(data){
     fs.writeFile(tabFile, JSON.stringify(data, null, 4), function(err){
