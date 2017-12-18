@@ -54,6 +54,6 @@ $ (the path of nw.js\)nw.exe .
 ## 사용자용 설치
 ## Installation for users
 * Windows 32bit
-http://php-webping.rhcloud.com/Setup_x86.exe
+https://www.datafilehost.com/d/e1d3e742
 * Windows 64bit
-http://php-webping.rhcloud.com/Setup_x64.exe
+https://www.datafilehost.com/d/8d8ff5fc
