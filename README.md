@@ -56,4 +56,4 @@ $ (the path of nw.js\)nw.exe .
 * Windows 32bit
 https://www.datafilehost.com/d/e1d3e742
 * Windows 64bit
-https://www.datafilehost.com/d/8d8ff5fc
+https://s3.ap-northeast-2.amazonaws.com/sdrlurker/Setup_x64.exe
