@@ -53,8 +53,8 @@ $ (the path of nw.js\)nw.exe .
 
 ## 사용자용 설치
 ## Installation for users
-* Windows 32bit
-https://www.datafilehost.com/d/e1d3e742
 * Windows 64bit
-https://github.com/SDRLurker/launcher/releases/download/1.0/Setup_x64.exe
-https://s3.ap-northeast-2.amazonaws.com/sdrlurker/Setup_x64.exe
+ - https://github.com/SDRLurker/launcher/releases/download/1.0/Setup_x64.exe
+ - https://s3.ap-northeast-2.amazonaws.com/sdrlurker/Setup_x64.exe
+* Windows 32bit
+ - ~~https://www.datafilehost.com/d/e1d3e742~~
